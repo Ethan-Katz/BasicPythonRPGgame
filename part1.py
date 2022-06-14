@@ -1,0 +1,266 @@
+import time
+import random
+import inventory as inv
+import gamecolors as color
+import userchoice as choice
+import gamerandnum as randnum
+import reStart
+import part2
+
+def part1():
+    time.sleep(3)
+    print()
+    color.prCyan("You are in a heavy fight with Quin, the ruler of the world VLE368.")
+    time.sleep(4)
+    print()
+    color.prRed("Pew")
+    time.sleep(1)
+    color.prRed("Pew")
+    time.sleep(1)
+    color.prRed("Pew")
+    time.sleep(1)
+    print()
+    color.prCyan("All of a sudden, you look behind you and you see two ships on your tail.")
+    time.sleep(4)
+    print()
+    color.prRed("Pew")
+    time.sleep(1)
+    color.prRed("Pew")
+    time.sleep(1)
+    print()
+    color.prRed("WaRnInG: sHiP iS dAmAgEd")
+    print()
+    time.sleep(3)
+    fate1()
+
+def fate1():
+    color.prLightPurple("What Are You Going to Do?")
+    choices = [["Run Away And Repair Ship", fate1enda],
+                ["Attack The Two Ships", fate1endb],
+                    ["Attack Quin", fate1endc]]
+    choice.userChoice(choices)
+
+def coinuserYesNo():
+        color.prLightPurple("Do You Want To Spend 50 Coins?")
+        print("(You Have", inv.numCoins(), "Coins)")
+        print()
+        x=input(">").upper()
+        if x in ["Y", "YES"]:
+            inv.dropCoins(50)
+            time.sleep(1)
+            randnum.num()
+            color.prLightPurple("Your ship is now repaired!")
+            print("(You Now Have", inv.numCoins(), "Coins)")
+        elif x in ["N", "NO"]:
+            inv.takeCoins(0)
+            print()
+            color.prRed("You Did Not Repair Your Ship!")
+
+def item1userYesNo():
+        color.prLightPurple("Do You Want To Accept The Deal?")
+        x=input(">").upper()
+        if x in ["Y", "YES"]:
+            print()
+            deal1()
+        elif x in ["N", "NO"]:
+            print()
+            color.prRed("You Did Not Accpet The Deal!")
+            enddeal1()
+
+def fate1enda():
+    print()
+    color.prLightPurple("You Picked Run Away And Repair Ship")
+    print()
+    time.sleep(2)
+    color.prCyan("You get away from that area as fast as you can.")
+    time.sleep(3)
+    color.prCyan("You make sure that you have not been tracked.")
+    time.sleep(3)
+    color.prCyan("You find the closest planet to repair your ship.")
+    time.sleep(3)
+    color.prCyan("You land on Venturon and find a repair station.")
+    time.sleep(3)
+    print()
+    color.prYellow("It Will Cost 50 Coins To Repair Your Ship!")
+    time.sleep(2)
+    print()
+    coinuserYesNo()
+    time.sleep(4)
+    print()
+    color.prCyan("You get on your ship.")
+    time.sleep(2)
+    color.prCyan("Right as you are about to leave.")
+    time.sleep(3)
+    color.prCyan("The owner of the repair station gives you a signal to talk to him.")
+    time.sleep(4)
+    color.prCyan("He wants to make a deal with you.")
+    time.sleep(3)
+    color.prCyan("He wants to see if you can transport an item for him.")
+    time.sleep(4)
+    color.prCyan("In return for a ultra powerful laser for your ship.")
+    time.sleep(4)
+    print()
+    item1userYesNo()
+
+def deal1():
+    color.prLightPurple("You Accepted The Deal!")
+    time.sleep(3)
+    print()
+    color.prCyan("Owner: Ok, here is the plan.")
+    color.prCyan("       I am going to give you this box")
+    color.prCyan("       I want you to deliver it to Raze.")
+    color.prCyan("       Ruler of the Kligger Galaxy.")
+    time.sleep(10)
+    print()
+    color.prCyan("YOU: What is inside of the box?")
+    time.sleep(3)
+    print()
+    color.prCyan("Owner: You dont have to know.")
+    time.sleep(1)
+    color.prCyan("       Just deliver it for your reward!")
+    time.sleep(5)
+    print()
+    color.prCyan("YOU: Ok, Ill be back once Im done!")
+    time.sleep(1)
+    print()
+    color.prCyan("Owner: Wait a second I have to give you another thing!")
+    time.sleep(2)
+    color.prCyan("       Here is a gun for your protection against Raze's soldiers.")
+    time.sleep(2)
+    color.prCyan("       They like to attack people for no reason.")
+    time.sleep(7)
+    print()
+    color.prCyan("YOU: Ok, thank you!")
+    inv.takeGun()
+    time.sleep(3)
+    print()
+    task1()
+
+def task1userYesNo():
+        color.prLightPurple("Do You Want To Tell Him You Have A Gun?")
+        x=input(">").upper()
+        if x in ["Y", "YES"]:
+            print()
+            color.prGreen("You Told Him You Have A Gun!")
+            task1end()
+        elif x in ["N", "NO"]:
+            print()
+            color.prRed("You Did Not Tell Him About The Gun!")
+            death1()
+
+def task1():
+    time.sleep(2)
+    color.prCyan("You get on your ship and you put the coordinates for Kligger Galaxy in the gps.")
+    time.sleep(5)
+    color.prPurple("zooooooooooooooooooooooooom")
+    time.sleep(3)
+    color.prCyan("You arive at the Kigger Galaxy and you land on the main planet.")
+    time.sleep(4)
+    color.prCyan("You enter the castle and right away a soldier needs to check you for weapons!")
+    time.sleep(4)
+    print()
+    task1userYesNo()
+
+def task1end():
+    inv.notGun1()
+    time.sleep(3)
+    print()
+    color.prCyan("He brought you to Raze.")
+    time.sleep(3)
+    color.prCyan("You gave her the box and she gave you a token to give to the owner for proof of delivery!")
+    time.sleep(5)
+    color.prCyan("You return to the owner and give him the token.")
+    time.sleep(3)
+    color.prCyan("Owner hands you the laser!")
+    inv.takeLaser()
+    time.sleep(4)
+    enddeal1()
+
+def death1():
+    time.sleep(3)
+    print()
+    color.prCyan("The soldier noticed the gun and shot you on the spot!")
+    print()
+    time.sleep(3)
+    color.prRed("You Died!")
+    time.sleep(2)
+    reStart.restartGame()
+
+def deal1end():
+    color.prLightPurple("What Are You Going to Do?")
+    choices2 = [["Attack The Two Ships", fate1endb],
+                    ["Attack Quin", fate1endc]]
+    if inv.hasLaser() == True:
+        choices2.append(["Shoot The Two Ships w/ Your Lazer", fate1endba])
+    choice.userChoice(choices2)
+
+def enddeal1():
+    print()
+    color.prCyan("You get back on your ship.")
+    time.sleep(3)
+    color.prCyan("You take off and you notice something in the corner of your eye!")
+    time.sleep(4)
+    color.prCyan("You see Quin and his two ships just waiting for you.")
+    time.sleep(3)
+    color.prCyan("They start to attack you!")
+    time.sleep(3)
+    print()
+    deal1end()
+
+def fate1endba():
+        print()
+        color.prCyan("You turn on your ultra powerful laser.")
+        time.sleep(3)
+        color.prCyan("You instantly pulverize the two ships.")
+        time.sleep(3)
+        print()
+        color.prRed("You used too much power and the laser was destroyed")
+        time.sleep(3)
+        inv.dropLaser()
+        inv.takeDebre()
+        time.sleep(3)
+        print()
+        color.prCyan("You still have to take care of Quin.")
+        time.sleep(3)
+        fate1endc()
+
+def fate1endb():
+    numfate1 = random.randint(1,100)
+    if numfate1 <= 50:
+        color.prCyan("After a couple of misses you finally hit the first ship and it explodes right in front of your eyes!")
+        time.sleep(4)
+        color.prCyan("While you are congratulating your self on the destruction of the first ship.")
+        time.sleep(4)
+        color.prCyan("The second ship shoots a lazer and it hits the back of your ship.")
+        time.sleep(5)
+        color.prCyan("Your ship is flying out of control.")
+        time.sleep(3)
+        color.prCyan("Your ship explodes.")
+        time.sleep(2)
+        print()
+        color.prRed("You Died")
+        time.sleep(3)
+        reStart.restartGame()
+    if numfate1 >= 51:
+        color.prCyan("Your third shot was a direct hit and you destroyed the first ship!")
+        time.sleep(3)
+        color.prCyan("Before the second ship had the chance to shoot you, you quickly turned around and got behind the second ship.")
+        time.sleep(4)
+        color.prCyan("While you were turning around you werent paying attention to Quin's ship!")
+        time.sleep(3)
+        color.prCyan("He fired one shot at you and it was a direct hit and you instantly pulverize!")
+        time.sleep(4)
+        print()
+        color.prRed("You died")
+        time.sleep(3)
+        reStart.restartGame()
+
+def fate1endc():
+    color.prCyan("You figure out a way to sneak onto Quin's ship.")
+    time.sleep(3)
+    color.prCyan("While getting off your ship to find Quin.")
+    time.sleep(3)
+    color.prCyan("A soldier spots you and starts shooting at you!")
+    time.sleep(3)
+    print()
+    part2.fate2()
